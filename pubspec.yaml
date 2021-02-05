@@ -23,6 +23,20 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  #路由管理
+  fluro: ^1.7.8
+  #屏幕适配插件
+  flutter_screenutil: ^4.0.2+8
+  #状态管理
+  provider: ^4.3.3
+  #toast
+  fluttertoast: ^7.1.6
+  #下拉刷新
+  pull_to_refresh: ^1.6.4
+  #日期选择插件
+  flutter_cupertino_date_picker: ^1.0.26+2
+  #图表插件
+  charts_flutter: ^0.9.0
 
 
   # The following adds the Cupertino Icons font to your application.
