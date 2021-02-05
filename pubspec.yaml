@@ -37,7 +37,8 @@ dependencies:
   flutter_cupertino_date_picker: ^1.0.26+2
   #图表插件
   charts_flutter: ^0.9.0
-
+  #数据存储
+  #shared_preferences: ^0.5.12+4
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
