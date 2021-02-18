@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
-
 ///provider封装类
-///
 class ProviderWidget<T extends ChangeNotifier> extends StatefulWidget{
   final ValueWidgetBuilder<T> builder;
   ///使用的实体
