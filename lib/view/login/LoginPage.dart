@@ -25,56 +25,85 @@ class LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final _screenSize = MediaQuery
+        .of(context)
+        .size;
+    final _screenHeight = _screenSize.height;
+    final _screenWidth = _screenSize.width;
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/imgGirlBack.png"),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Column(children: [
-
-          ///Image
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(image: DecorationImage(
-                image: AssetImage("assets/image/imgBG.png"),
-                fit: BoxFit.cover,
-              )),
+      body: SingleChildScrollView(
+        child: Container(
+          height: _screenHeight,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/imgGirlBack.png"),
+              fit: BoxFit.fitHeight,
             ),
-            flex: 6,),
+          ),
+          child: Column(children: [
+            ///LOGO图片
+            Expanded(child: Padding(
+              padding: const EdgeInsets.only(top: 20, left: 32, right: 32),
+              child: Container(
+                decoration: BoxDecoration(image: DecorationImage(
+                  image: AssetImage("assets/images/imgBG.png"),
+                  fit: BoxFit.contain,
+                )),
+              ),
+            ),
+              flex: 6,),
 
-          ///Form
-          Expanded(
-            child: Container(
+            ///表单
+            Expanded(child: Container(
               child: Column(children: [
+
                 ///Title
                 RichText(text: TextSpan(
                   text: "${GSVar.loginTitle}",
-                  style: TextStyle(color: ThemeColors.picaPink,fontSize: 24),
+                  style: TextStyle(color: ThemeColors.picaPink, fontSize: 32,fontWeight: FontWeight.bold),
                 )),
+
                 ///账号
-                LoginTextField(),
+                LoginTextField(label: "${GSVar.username}",
+                  controller: _userNameController,),
+
                 ///密码
-                LoginTextField(),
+                LoginTextField(label: "${GSVar.password}",
+                  controller: _passWordController,
+                  isPassword: true,),
+
                 ///登录按钮
                 LoginButton(),
-              ],),
+
+                ///额外选项
+                Padding(padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(children: [
+                    ///注册入口
+                    TextButton(onPressed: () {
+                      // Navigator.of(context).;
+                    },
+                        child: Text("${GSVar.goRegister}",
+                          style: TextStyle(color: ThemeColors.picaPink),)),
+                    ///忘记密码入口（测试版本中功能为使用默认账号登录）
+                    TextButton(onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                        child: Text("${GSVar.forgetPassword}",
+                          style: TextStyle(color: ThemeColors.picaPink),)),
+                  ],
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  ),
+                ),
+              ],
+                mainAxisAlignment: MainAxisAlignment.start,
+              ),
+              decoration: BoxDecoration(color: Colors.white),
             ),
-            flex: 3,
-          ),
-          ///额外选项
-          Expanded(
-            child: Row(children: [
-
-            ],),
-            flex: 1,
-          ),
-
-        ],),
+              flex: 4,
+            ),
+          ],),
+        ),
       ),
     );
   }
-
 }
